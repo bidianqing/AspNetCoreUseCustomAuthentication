@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace AspNetCoreUseCustomAuthentication.Controllers
 {
@@ -27,7 +28,8 @@ namespace AspNetCoreUseCustomAuthentication.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation(User.Identity.Name);
+            var value = base.User.FindFirstValue("write your name");
+            _logger.LogInformation(base.User.Identity.Name);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
