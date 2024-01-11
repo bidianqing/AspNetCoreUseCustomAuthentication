@@ -19,7 +19,7 @@
     },
     "AspNetCoreUseCustomAuthentication": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true,
       "launchBrowser": false,
       "launchUrl": "weatherforecast",
       "applicationUrl": "http://localhost:5000",

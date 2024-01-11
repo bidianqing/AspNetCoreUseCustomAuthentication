@@ -11,8 +11,8 @@ namespace AspNetCoreUseCustomAuthentication
 {
     public class CustomHandler: AuthenticationHandler<CustomOptions>
     {
-        public CustomHandler(IOptionsMonitor<CustomOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
-            : base(options, logger, encoder, clock)
+        public CustomHandler(IOptionsMonitor<CustomOptions> options, ILoggerFactory logger, UrlEncoder encoder)
+            : base(options, logger, encoder)
         { }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -25,6 +25,7 @@ namespace AspNetCoreUseCustomAuthentication
             var principal = new ClaimsPrincipal(new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.Name, "bidianqing"),
+                new Claim("gender", "男"),
             }, "Custom"));
             var ticket = new AuthenticationTicket(new ClaimsPrincipal(principal), "Custom");
 
